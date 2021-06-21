@@ -65,7 +65,7 @@ class GhibiDatabase {
   }
 
   //READ Functions
-  Future<WatchList?> readWatchList(String id) async {
+  Future<WatchList?> readWatchList(int id) async {
     //for checking if a movie already exists in watch list
     final db = await instance.database;
 
@@ -86,8 +86,7 @@ class GhibiDatabase {
   Future<List<WatchList?>> readAllWatchList() async {
     final db = await instance.database;
 
-    final result =
-        await db.query(tableWatchList, groupBy: WatchListFields.isWatched);
+    final result = await db.query(tableWatchList);
 
     return result.map((json) => WatchList.fromJson(json)).toList();
   }

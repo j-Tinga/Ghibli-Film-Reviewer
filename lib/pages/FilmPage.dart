@@ -92,7 +92,7 @@ class FilmPage extends StatelessWidget with ValidationMixin {
                 'Director: ${film["director"]} \n'
                 'Producer: ${film["producer"]}\n'
                 'Release Year: ${film["release_date"]} \n'
-                'Running Time: ${film["running_time"]} \n\n'
+                'Running Time: ${film["running_time"]} minutes \n\n'
                 'Synopsis: ${film["description"]}',
                 softWrap: true,
                 textAlign: TextAlign.justify,
@@ -107,7 +107,7 @@ class FilmPage extends StatelessWidget with ValidationMixin {
 
   Future addToWatchList(context) async {
     var snackBarText;
-    if (await GhibiDatabase.instance.readWatchList(film['id']) != null) {
+    if (await GhibiDatabase.instance.readWatchList(filmIndex) != null) {
       snackBarText = "Film already in watch list";
     } else {
       final watchList = WatchList(isWatched: false, filmIndex: filmIndex);
@@ -117,6 +117,7 @@ class FilmPage extends StatelessWidget with ValidationMixin {
 
     final snackBar = SnackBar(
       content: Text(snackBarText),
+      duration: Duration(seconds: 1, milliseconds: 500),
     );
 
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
