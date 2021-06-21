@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:cis2203_final_exam/widgets/FilmCard.dart';
+import 'package:cis2203_final_exam/classes/filmImages.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart';
@@ -14,11 +15,7 @@ class LibraryPage extends StatefulWidget {
 class _LibraryPageState extends State<LibraryPage> {
   final url = "https://ghibliapi.herokuapp.com/films";
   var _filmData = [];
-
-  //Ghibli API doesn't include pictures, so I have to take some urls from the internet
-  var _filmImages = [
-    "https://en.wikipedia.org/wiki/Castle_in_the_Sky#/media/File:Castle_in_the_Sky_(1986).png",
-  ];
+  var _filmPosters = new filmImage();
 
   //http get Ghilbli Films
   void fetchFilms() async {
@@ -42,6 +39,9 @@ class _LibraryPageState extends State<LibraryPage> {
           title: Text("Ghibli Film Library"),
         ),
         body: GridView.builder(
+          scrollDirection: Axis.vertical,
+          physics: ScrollPhysics(),
+          shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 20,
@@ -52,10 +52,9 @@ class _LibraryPageState extends State<LibraryPage> {
           itemCount: _filmData.length,
           itemBuilder: (context, i) {
             final film = _filmData[i];
-            return FilmCard(
-                filmTitle: "${film["title"]}",
-                imageUrl:
-                    "https://m.media-amazon.com/images/M/MV5BZmY2NjUzNDQtNTgxNC00M2Q4LTljOWQtMjNjNDBjNWUxNmJlXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY1200_CR85,0,630,1200_AL_.jpg");
+            final filmImage = _filmPosters.getFilmImages[i];
+
+            return FilmCard(filmTitle: "${film["title"]}", imageUrl: filmImage);
           },
         ));
   }
