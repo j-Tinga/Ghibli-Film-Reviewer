@@ -1,5 +1,4 @@
-//Ghibli API doesn't include pictures, so I have to take some urls from the internet
-
+//Ghibli API doesn't include the movie posters, so I have to take some urls from the internet
 class filmImage {
   static var images = [
     "https://m.media-amazon.com/images/M/MV5BYzg0MWQwNTktM2ExNC00MmY2LTgwZmEtNjU5YTNlNmFmOTNhXkEyXkFqcGdeQXVyNzMwOTY2NTI@._V1_.jpg",

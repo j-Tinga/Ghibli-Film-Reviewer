@@ -47,14 +47,13 @@ class _LibraryPageState extends State<LibraryPage> {
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,
             childAspectRatio: MediaQuery.of(context).size.width /
-                (MediaQuery.of(context).size.height / 1),
+                (MediaQuery.of(context).size.height / 1.2),
           ),
           itemCount: _filmData.length,
           itemBuilder: (context, i) {
             final film = _filmData[i];
             final filmImage = _filmPosters.getFilmImages[i];
-
-            return FilmCard(filmTitle: "${film["title"]}", imageUrl: filmImage);
+            return FilmCard(film: film, imageUrl: filmImage);
           },
         ));
   }

@@ -1,12 +1,14 @@
+import 'package:cis2203_final_exam/pages/FilmPage.dart';
+
 import 'package:flutter/material.dart';
 
 class FilmCard extends StatelessWidget {
-  final String filmTitle;
   final String imageUrl;
+  final Map film;
 
   FilmCard({
-    required this.filmTitle,
     required this.imageUrl,
+    required this.film,
   });
 
   @override
@@ -15,7 +17,7 @@ class FilmCard extends StatelessWidget {
         child: InkWell(
       splashColor: Colors.blue.withAlpha(30),
       onTap: () {
-        print('Card tapped.');
+        navsToFilmPage(context);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -28,13 +30,21 @@ class FilmCard extends StatelessWidget {
         child: Align(
             alignment: Alignment.bottomLeft,
             child: Text(
-              filmTitle,
+              "${film["title"]}",
               style: TextStyle(
                   backgroundColor: Colors.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20),
+                  fontSize: 16),
             )),
       ),
     ));
+  }
+
+  void navsToFilmPage(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => FilmPage(
+              film: film,
+              filmPoster: imageUrl,
+            )));
   }
 }
