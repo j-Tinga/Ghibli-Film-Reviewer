@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class FilmCard extends StatelessWidget {
   final String imageUrl;
+  final int filmIndex;
   final Map film;
 
   FilmCard({
     required this.imageUrl,
+    required this.filmIndex,
     required this.film,
   });
 
@@ -44,6 +46,7 @@ class FilmCard extends StatelessWidget {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => FilmPage(
               film: film,
+              filmIndex: filmIndex,
               filmPoster: imageUrl,
             )));
   }

@@ -1,6 +1,7 @@
 import 'package:cis2203_final_exam/database/ghibi_database.dart';
 import 'package:cis2203_final_exam/models/review.dart';
 import 'package:cis2203_final_exam/models/watchList.dart';
+import 'package:cis2203_final_exam/widgets/FormattedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,6 +14,7 @@ class WatchListPage extends StatefulWidget {
 
 class _WatchListPageState extends State<WatchListPage> {
   late List<WatchList?> watchList;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -21,25 +23,26 @@ class _WatchListPageState extends State<WatchListPage> {
     refreshWatchList();
   }
 
-  @override
-  void dispose() {
-    GhibiDatabase.instance.close();
-
-    super.dispose();
-  }
-
   Future refreshWatchList() async {
+    setState(() => isLoading = true);
     this.watchList = await GhibiDatabase.instance.readAllWatchList();
+    setState(() => isLoading = false);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('The test is ${watchList[1]!.filmID.toString()}.'),
+        title: Text('Watch List'),
       ),
       body: ListView(children: [
-        Container(),
+        isLoading ? CircularProgressIndicator() : Text("yeh"),
+        FormattedButton(
+            text: "Review",
+            iconData: Icons.library_books,
+            onPress: () {
+              print("Yey");
+            }),
       ]),
     );
   }

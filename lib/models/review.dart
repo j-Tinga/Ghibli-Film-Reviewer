@@ -1,9 +1,9 @@
 final String tableReviews = 'reviews';
 
 class ReviewFields {
-  static final List<String> values = [id, filmID, score, title, description];
+  static final List<String> values = [id, filmIndex, score, title, description];
   static final String id = '_id';
-  static final String filmID = 'filmID'; //for getting film data from API
+  static final String filmIndex = 'filmIndex'; //for getting film data from API
   static final String score = 'score';
   static final String title = 'title';
   static final String description = 'description';
@@ -11,7 +11,7 @@ class ReviewFields {
 
 class Review {
   final int? id;
-  final int filmID;
+  final int filmIndex;
   final int score;
   final String title;
   final String description;
@@ -19,21 +19,21 @@ class Review {
   const Review({
     this.id,
     required this.score,
-    required this.filmID,
+    required this.filmIndex,
     required this.title,
     required this.description,
   });
 
   Review copy({
     int? id,
-    int? filmID,
+    int? filmIndex,
     int? score,
     String? title,
     String? description,
   }) =>
       Review(
         id: id ?? this.id,
-        filmID: filmID ?? this.filmID,
+        filmIndex: filmIndex ?? this.filmIndex,
         score: score ?? this.score,
         title: title ?? this.title,
         description: description ?? this.description,
@@ -41,7 +41,7 @@ class Review {
 
   static Review fromJson(Map<String, Object?> json) => Review(
         id: json[ReviewFields.id] as int?,
-        filmID: json[ReviewFields.filmID] as int,
+        filmIndex: json[ReviewFields.filmIndex] as int,
         score: json[ReviewFields.score] as int,
         title: json[ReviewFields.title] as String,
         description: json[ReviewFields.description] as String,
@@ -49,7 +49,7 @@ class Review {
 
   Map<String, Object?> toJson() => {
         ReviewFields.id: id,
-        ReviewFields.filmID: filmID,
+        ReviewFields.filmIndex: filmIndex,
         ReviewFields.score: score,
         ReviewFields.title: title,
         ReviewFields.description: description,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:cis2203_final_exam/widgets/FilmCard.dart';
 import 'package:cis2203_final_exam/classes/filmImages.dart';
+import 'package:cis2203_final_exam/widgets/FormattedButton.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart';
@@ -27,7 +28,7 @@ class _LibraryPageState extends State<LibraryPage> {
         _filmData = jsonData;
       });
     } catch (e) {
-      print("HTTP request failed");
+      print("HTTP closed");
     }
   }
 
@@ -53,7 +54,7 @@ class _LibraryPageState extends State<LibraryPage> {
           itemBuilder: (context, i) {
             final film = _filmData[i];
             final filmImage = _filmPosters.getFilmImages[i];
-            return FilmCard(film: film, imageUrl: filmImage);
+            return FilmCard(film: film, filmIndex: i, imageUrl: filmImage);
           },
         ));
   }

@@ -33,18 +33,18 @@ class GhibiDatabase {
     await db.execute('''
     CREATE TABLE $tableWatchList( 
       ${WatchListFields.id} $idType, 
-      ${WatchListFields.filmID} $integerType,
-      ${WatchListFields.isWatched} $boolType,
+      ${WatchListFields.filmIndex} $integerType,
+      ${WatchListFields.isWatched} $boolType
     ) 
       ''');
 
     await db.execute('''
     CREATE TABLE $tableReviews( 
       ${ReviewFields.id} $idType, 
-      ${ReviewFields.filmID} $integerType,
+      ${ReviewFields.filmIndex} $integerType,
       ${ReviewFields.score} $integerType,
       ${ReviewFields.title} $textType,
-      ${ReviewFields.description} $textType,
+      ${ReviewFields.description} $textType
     ) 
       ''');
   }
@@ -65,13 +65,14 @@ class GhibiDatabase {
   }
 
   //READ Functions
-  Future<WatchList?> readWatchList(int id) async {
+  Future<WatchList?> readWatchList(String id) async {
+    //for checking if a movie already exists in watch list
     final db = await instance.database;
 
     final maps = await db.query(
       tableWatchList,
-      columns: ReviewFields.values,
-      where: '${WatchListFields.id} = ?',
+      columns: WatchListFields.values,
+      where: '${WatchListFields.filmIndex} == ?',
       whereArgs: [id],
     );
 

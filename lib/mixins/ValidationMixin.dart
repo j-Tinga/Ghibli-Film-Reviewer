@@ -43,6 +43,4 @@ class ValidationMixin {
   String? noValidation(String value) {
     return null;
   }
-
-  String? validateWatchList(int id) {}
 }

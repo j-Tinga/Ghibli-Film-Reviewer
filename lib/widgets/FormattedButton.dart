@@ -10,7 +10,7 @@ class FormattedButton extends StatelessWidget {
 
   final String text;
   final IconData iconData;
-  final Function()? onPress;
+  final Function() onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class FormattedButton extends StatelessWidget {
         height: 100.0,
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
               primary: Theme.of(context).primaryColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0)),

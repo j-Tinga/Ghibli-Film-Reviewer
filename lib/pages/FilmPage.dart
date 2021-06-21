@@ -1,13 +1,19 @@
 import 'package:cis2203_final_exam/database/ghibi_database.dart';
+import 'package:cis2203_final_exam/mixins/ValidationMixin.dart';
 import 'package:cis2203_final_exam/models/watchList.dart';
 import 'package:cis2203_final_exam/widgets/FormattedButton.dart';
 import 'package:flutter/material.dart';
 
-class FilmPage extends StatelessWidget {
+class FilmPage extends StatelessWidget with ValidationMixin {
   final Map film;
+  final int filmIndex;
   final String filmPoster;
 
-  const FilmPage({Key? key, required this.film, required this.filmPoster})
+  const FilmPage(
+      {Key? key,
+      required this.film,
+      required this.filmIndex,
+      required this.filmPoster})
       : super(key: key);
   static const String routeName = "FilmPage";
 
@@ -72,9 +78,11 @@ class FilmPage extends StatelessWidget {
                       onPress: () {}),
                   SizedBox(width: 10),
                   FormattedButton(
-                      text: "Review",
-                      iconData: Icons.library_books,
-                      onPress: () {}),
+                      text: "Watch List",
+                      iconData: Icons.list_alt,
+                      onPress: () {
+                        addToWatchList(context);
+                      }),
                 ],
               ),
             ),
@@ -97,9 +105,20 @@ class FilmPage extends StatelessWidget {
         ));
   }
 
-  Future addToWatchList() async {
-    final watchList = WatchList(isWatched: false, filmID: film["id"]);
+  Future addToWatchList(context) async {
+    var snackBarText;
+    if (await GhibiDatabase.instance.readWatchList(film['id']) != null) {
+      snackBarText = "Film already in watch list";
+    } else {
+      final watchList = WatchList(isWatched: false, filmIndex: filmIndex);
+      await GhibiDatabase.instance.createWatchList(watchList);
+      snackBarText = "Film added to watch list";
+    }
 
-    await GhibiDatabase.instance.createWatchList(watchList);
+    final snackBar = SnackBar(
+      content: Text(snackBarText),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
