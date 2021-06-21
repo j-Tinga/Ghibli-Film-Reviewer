@@ -82,7 +82,7 @@ class GhibiDatabase {
     }
   }
 
-  Future<List<WatchList?>> readAllWatchList(int id) async {
+  Future<List<WatchList?>> readAllWatchList() async {
     final db = await instance.database;
 
     final result =
@@ -91,7 +91,7 @@ class GhibiDatabase {
     return result.map((json) => WatchList.fromJson(json)).toList();
   }
 
-  Future<List<Review?>> readAllReviews(int id) async {
+  Future<List<Review?>> readAllReviews() async {
     final db = await instance.database;
 
     final result = await db.query(tableReviews);

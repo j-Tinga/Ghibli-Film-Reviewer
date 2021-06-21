@@ -1,3 +1,6 @@
+import 'package:cis2203_final_exam/database/ghibi_database.dart';
+import 'package:cis2203_final_exam/models/watchList.dart';
+import 'package:cis2203_final_exam/widgets/FormattedButton.dart';
 import 'package:flutter/material.dart';
 
 class FilmPage extends StatelessWidget {
@@ -60,16 +63,18 @@ class FilmPage extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.all(2),
+              padding: const EdgeInsets.only(left: 15, right: 5),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.library_books,
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.red[500],
-                  ),
+                  FormattedButton(
+                      text: "Review",
+                      iconData: Icons.library_books,
+                      onPress: () {}),
+                  SizedBox(width: 10),
+                  FormattedButton(
+                      text: "Review",
+                      iconData: Icons.library_books,
+                      onPress: () {}),
                 ],
               ),
             ),
@@ -90,5 +95,11 @@ class FilmPage extends StatelessWidget {
             ),
           ],
         ));
+  }
+
+  Future addToWatchList() async {
+    final watchList = WatchList(isWatched: false, filmID: film["id"]);
+
+    await GhibiDatabase.instance.createWatchList(watchList);
   }
 }

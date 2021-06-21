@@ -3,7 +3,7 @@ final String tableReviews = 'reviews';
 class ReviewFields {
   static final List<String> values = [id, filmID, score, title, description];
   static final String id = '_id';
-  static final String filmID = 'filmID';
+  static final String filmID = 'filmID'; //for getting film data from API
   static final String score = 'score';
   static final String title = 'title';
   static final String description = 'description';

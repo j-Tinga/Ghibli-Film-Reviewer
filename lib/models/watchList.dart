@@ -3,8 +3,9 @@ final String tableWatchList = 'watchList';
 class WatchListFields {
   static final List<String> values = [id, filmID, isWatched];
   static final String id = '_id';
-  static final String filmID = 'filmID';
-  static final String isWatched = 'isWatched';
+  static final String filmID = 'filmID'; //for getting film data from API
+  static final String isWatched =
+      'isWatched'; //for knowing whether the user has watched the film in their watchlist (kapoy implement, sa future nlng gamiton)
 }
 
 class WatchList {
