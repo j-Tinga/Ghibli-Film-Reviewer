@@ -15,6 +15,11 @@ class _LibraryPageState extends State<LibraryPage> {
   final url = "https://ghibliapi.herokuapp.com/films";
   var _filmData = [];
 
+  //Ghibli API doesn't include pictures, so I have to take some urls from the internet
+  var _filmImages = [
+    "https://en.wikipedia.org/wiki/Castle_in_the_Sky#/media/File:Castle_in_the_Sky_(1986).png",
+  ];
+
   //http get Ghilbli Films
   void fetchFilms() async {
     try {
@@ -38,17 +43,19 @@ class _LibraryPageState extends State<LibraryPage> {
         ),
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20),
+            crossAxisCount: 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            childAspectRatio: MediaQuery.of(context).size.width /
+                (MediaQuery.of(context).size.height / 1),
+          ),
           itemCount: _filmData.length,
           itemBuilder: (context, i) {
             final film = _filmData[i];
             return FilmCard(
                 filmTitle: "${film["title"]}",
                 imageUrl:
-                    "https://en.wikipedia.org/wiki/Castle_in_the_Sky#/media/File:Castle_in_the_Sky_(1986).png");
+                    "https://m.media-amazon.com/images/M/MV5BZmY2NjUzNDQtNTgxNC00M2Q4LTljOWQtMjNjNDBjNWUxNmJlXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY1200_CR85,0,630,1200_AL_.jpg");
           },
         ));
   }

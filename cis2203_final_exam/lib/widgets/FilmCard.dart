@@ -17,12 +17,20 @@ class FilmCard extends StatelessWidget {
       onTap: () {
         print('Card tapped.');
       },
-      child: SizedBox(
-        width: 300,
-        height: 100,
-        child: Text(
-          filmTitle,
-        ),
+      child: Column(
+        children: [
+          Text(filmTitle),
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg/revision/latest?cb=20210608122415.png'),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter,
+              ),
+            ),
+          ),
+        ],
       ),
     ));
   }
