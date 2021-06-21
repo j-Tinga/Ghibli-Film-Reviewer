@@ -30,7 +30,7 @@ class _ReviewsPageState extends State<ReviewsPage> {
           ),
           Container(
             child: Text(
-              "Test",
+              "sd",
               style: TextStyle(backgroundColor: Colors.blue),
             ),
           )

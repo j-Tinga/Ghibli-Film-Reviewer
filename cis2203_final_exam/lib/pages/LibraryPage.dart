@@ -47,7 +47,7 @@ class _LibraryPageState extends State<LibraryPage> {
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,
             childAspectRatio: MediaQuery.of(context).size.width /
-                (MediaQuery.of(context).size.height / 1.2),
+                (MediaQuery.of(context).size.height / 1.5),
           ),
           itemCount: _filmData.length,
           itemBuilder: (context, i) {
