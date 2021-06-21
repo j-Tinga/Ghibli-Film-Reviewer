@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "5806461328",
+    "project_id": "ghibli-film-reviewer",
+    "storage_bucket": "ghibli-film-reviewer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5806461328:android:2370eaa79de7a83dd4a315",
+        "android_client_info": {
+          "package_name": "com.example.cis2203_final_exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5806461328-inav2mk7c4iqed5drqdrmh39g5onc1nd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOgoEwlRq8Mpczqr7rzDH_GaSIqFXC52k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5806461328-inav2mk7c4iqed5drqdrmh39g5onc1nd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
