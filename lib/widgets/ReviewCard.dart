@@ -75,8 +75,9 @@ class ReviewCard extends StatelessWidget {
                       '"${review!.title}" \n',
                       style: TextStyle(
                         fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 17,
+                        fontSize: 16,
                       ),
                       textAlign: TextAlign.left,
                     ),

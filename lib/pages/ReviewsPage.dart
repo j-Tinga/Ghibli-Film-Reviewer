@@ -52,6 +52,7 @@ class _ReviewsPageState extends State<ReviewsPage> {
     fetchFilms();
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Center(
           child: Text("Reviews"),
         ),

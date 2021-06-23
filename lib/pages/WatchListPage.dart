@@ -52,8 +52,11 @@ class _WatchListPageState extends State<WatchListPage> {
     fetchFilms();
     return Scaffold(
         appBar: AppBar(
-          title: Center(child: Text("Watch List")),
+          title: Center(
+            child: Text("Watch List"),
+          ),
           automaticallyImplyLeading: false,
+          centerTitle: true,
           actions: [
             IconButton(
               onPressed: logout,

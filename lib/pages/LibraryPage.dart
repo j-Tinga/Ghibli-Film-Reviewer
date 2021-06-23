@@ -36,6 +36,7 @@ class _LibraryPageState extends State<LibraryPage> {
     fetchFilms();
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Center(
           child: Text(
             "Ghibli Film Library",

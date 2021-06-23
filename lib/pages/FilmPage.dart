@@ -1,7 +1,7 @@
 import 'package:cis2203_final_exam/database/ghibi_database.dart';
 import 'package:cis2203_final_exam/mixins/ValidationMixin.dart';
 import 'package:cis2203_final_exam/models/watchList.dart';
-import 'package:cis2203_final_exam/pages/reviewPage.dart';
+import 'package:cis2203_final_exam/pages/WriteReviewPage.dart';
 import 'package:cis2203_final_exam/widgets/FormattedButton.dart';
 import 'package:flutter/material.dart';
 
@@ -134,7 +134,7 @@ class FilmPage extends StatelessWidget with ValidationMixin {
   void navsToReviewPage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => ReviewPage(
+        builder: (context) => WriteReviewPage(
           film: film,
           filmIndex: filmIndex,
           filmPoster: filmPoster,

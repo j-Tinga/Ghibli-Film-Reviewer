@@ -7,13 +7,13 @@ import 'package:cis2203_final_exam/widgets/NumbersOnlyTextFormField.dart';
 import 'package:cis2203_final_exam/widgets/PrimaryButton.dart';
 import 'package:flutter/material.dart';
 
-class ReviewPage extends StatefulWidget {
-  static const String routeName = "ReviewPage";
+class WriteReviewPage extends StatefulWidget {
+  static const String routeName = "WriteReviewPage";
 
   final Map film;
   final int filmIndex;
   final String filmPoster;
-  const ReviewPage(
+  const WriteReviewPage(
       {Key? key,
       required this.film,
       required this.filmIndex,
@@ -21,10 +21,11 @@ class ReviewPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ReviewPageState createState() => _ReviewPageState();
+  _WriteReviewPageState createState() => _WriteReviewPageState();
 }
 
-class _ReviewPageState extends State<ReviewPage> with ValidationMixin {
+class _WriteReviewPageState extends State<WriteReviewPage>
+    with ValidationMixin {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController scoreTextController = TextEditingController();
   final TextEditingController titleTextController = TextEditingController();
