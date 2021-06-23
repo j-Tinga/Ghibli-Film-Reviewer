@@ -17,14 +17,17 @@ __Login Page__ - Landing page for when the app is initially open. (Username and 
 ![Login Page Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/Login.JPG?raw=true)
 
 __Film Library__  - This where users can look through all the Studio Ghibli Films, read information about those films (Name,  Rotten Tomato Score, Director, Synopsis etc.), review or add it to their watch list.
+
 ![Film Library Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/FilmLibrary.JPG?raw=true)
 ![Film Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/FilmPage.JPG?raw=true)
 ![Film2 Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/FilmPage2.JPG?raw=true)
 
-__Watch List__ - This is where users can see their bookmarked movies that they plan to watch for easy access
+__Watch List__ - This is where users can see their bookmarked movies that they plan to watch for easy access.
+
 ![WatchList Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/WatchList.JPG?raw=true)
 
 __Reviews__ - Users can write reviews on films that they have watched. They can then see all their written reviews in the "Reviews" page where they can also see how many Ghibli films that they have watched and wrote a review about out of the total.
+
 ![Write Review Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/WriteReviewPage.JPG?raw=true)
 ![Write Review2 Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/WriteReviewPage2.JPG?raw=true)
 ![Reviews Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/ReviewPage.JPG?raw=true)
