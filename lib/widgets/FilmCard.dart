@@ -43,11 +43,14 @@ class FilmCard extends StatelessWidget {
   }
 
   void navsToFilmPage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
+    Navigator.of(context).push(
+      MaterialPageRoute(
         builder: (context) => FilmPage(
-              film: film,
-              filmIndex: filmIndex,
-              filmPoster: imageUrl,
-            )));
+          film: film,
+          filmIndex: filmIndex,
+          filmPoster: imageUrl,
+        ),
+      ),
+    );
   }
 }
