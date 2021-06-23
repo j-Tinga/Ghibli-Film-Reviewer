@@ -1,9 +1,0 @@
-   final TextEditingController _controller = TextEditingController();
- child: TextFormField(
-              controller: _controller,
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              decoration: InputDecoration(
-                  labelText: "whatever you want",
-                  hintText: "whatever you want",
-                  icon: Icon(Icons.phone_iphone))),

@@ -91,12 +91,40 @@ class GhibiDatabase {
     return result.map((json) => WatchList.fromJson(json)).toList();
   }
 
+  Future<WatchList?> readReview(int id) async {
+    //for checking if a movie already exists in watch list
+    final db = await instance.database;
+
+    final maps = await db.query(
+      tableReviews,
+      columns: ReviewFields.values,
+      where: '${ReviewFields.filmIndex} == ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return WatchList.fromJson(maps.first);
+    } else {
+      return null;
+    }
+  }
+
   Future<List<Review?>> readAllReviews() async {
     final db = await instance.database;
 
     final result = await db.query(tableReviews);
 
     return result.map((json) => Review.fromJson(json)).toList();
+  }
+
+  Future<int> deleteWatchList(int id) async {
+    final db = await instance.database;
+
+    return await db.delete(
+      tableWatchList,
+      where: '${WatchListFields.filmIndex} == ?',
+      whereArgs: [id],
+    );
   }
 
   Future close() async {

@@ -1,16 +1,16 @@
 import 'package:cis2203_final_exam/database/ghibi_database.dart';
 import 'package:cis2203_final_exam/mixins/ValidationMixin.dart';
 import 'package:cis2203_final_exam/models/watchList.dart';
-import 'package:cis2203_final_exam/pages/reviewPage.dart';
+import 'package:cis2203_final_exam/pages/ReviewPage.dart';
 import 'package:cis2203_final_exam/widgets/FormattedButton.dart';
 import 'package:flutter/material.dart';
 
-class FilmPage extends StatelessWidget with ValidationMixin {
+class ListedFilmPage extends StatelessWidget with ValidationMixin {
   final Map film;
   final int filmIndex;
   final String filmPoster;
 
-  const FilmPage(
+  const ListedFilmPage(
       {Key? key,
       required this.film,
       required this.filmIndex,
@@ -23,10 +23,7 @@ class FilmPage extends StatelessWidget with ValidationMixin {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: Text(
-              "${film["title"]}",
-              textAlign: TextAlign.center,
-            ),
+            title: Text("${film["title"]}"),
           ),
           body: ListView(
             children: [
@@ -78,17 +75,18 @@ class FilmPage extends StatelessWidget with ValidationMixin {
                 child: Row(
                   children: [
                     FormattedButton(
-                        text: "Review",
-                        iconData: Icons.star,
-                        onPress: () {
-                          navsToReviewPage(context);
-                        }),
+                      text: "Review",
+                      iconData: Icons.star,
+                      onPress: () {
+                        navsToReviewPage(context);
+                      },
+                    ),
                     SizedBox(width: 10),
                     FormattedButton(
                         text: "Watch List",
-                        iconData: Icons.list_alt,
+                        iconData: Icons.remove_circle,
                         onPress: () {
-                          addToWatchList(context);
+                          removeFromWatchList(context);
                         }),
                   ],
                 ),
@@ -113,6 +111,32 @@ class FilmPage extends StatelessWidget with ValidationMixin {
     );
   }
 
+  Future removeFromWatchList(context) async {
+    var snackBarText, snackBarlabel;
+    if (await GhibiDatabase.instance.readWatchList(filmIndex) != null) {
+      await GhibiDatabase.instance.deleteWatchList(filmIndex);
+      snackBarText = "Film removed from watch list";
+      snackBarlabel = "Undo";
+    } else {
+      snackBarText = "Film already removed from watch list";
+      snackBarlabel = "Add Back";
+    }
+
+    final snackBar = SnackBar(
+      content: Text(snackBarText),
+      duration: Duration(seconds: 1, milliseconds: 500),
+      action: SnackBarAction(
+        textColor: Colors.blue,
+        label: snackBarlabel,
+        onPressed: () {
+          addToWatchList(context);
+        },
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   Future addToWatchList(context) async {
     var snackBarText;
     if (await GhibiDatabase.instance.readWatchList(filmIndex) != null) {
@@ -120,7 +144,7 @@ class FilmPage extends StatelessWidget with ValidationMixin {
     } else {
       final watchList = WatchList(isWatched: false, filmIndex: filmIndex);
       await GhibiDatabase.instance.createWatchList(watchList);
-      snackBarText = "Film added to watch list";
+      snackBarText = "Film added back to watch list";
     }
 
     final snackBar = SnackBar(

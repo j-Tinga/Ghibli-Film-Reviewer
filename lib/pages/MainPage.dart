@@ -32,6 +32,7 @@ class _MainPageState extends State<MainPage> {
               Icons.library_books,
               color: _selectedPage == 0 ? Colors.blue : Colors.grey,
             ),
+            // ignore: deprecated_member_use
             title: Text('Library',
                 style: TextStyle(
                   color: _selectedPage == 0 ? Colors.blue : Colors.grey,
@@ -42,6 +43,7 @@ class _MainPageState extends State<MainPage> {
               Icons.list_alt,
               color: _selectedPage == 1 ? Colors.blue : Colors.grey,
             ),
+            // ignore: deprecated_member_use
             title: Text('Watch List',
                 style: TextStyle(
                   color: _selectedPage == 1 ? Colors.blue : Colors.grey,
@@ -52,6 +54,7 @@ class _MainPageState extends State<MainPage> {
               Icons.stars,
               color: _selectedPage == 2 ? Colors.blue : Colors.grey,
             ),
+            // ignore: deprecated_member_use
             title: Text('Review',
                 style: TextStyle(
                   color: _selectedPage == 2 ? Colors.blue : Colors.grey,

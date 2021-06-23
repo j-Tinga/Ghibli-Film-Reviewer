@@ -1,3 +1,5 @@
+import 'package:cis2203_final_exam/pages/login.dart';
+import 'package:cis2203_final_exam/pages/reviewPage.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'pages/FilmPage.dart';
@@ -10,4 +12,10 @@ final Map<String, WidgetBuilder> routes = {
         filmPoster: '',
       ),
   MainPage.routeName: (BuildContext context) => MainPage(),
+  Login.routeName: (BuildContext context) => Login(),
+  ReviewPage.routeName: (BuildContext context) => ReviewPage(
+        film: {},
+        filmIndex: 0,
+        filmPoster: '',
+      ),
 };

@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:cis2203_final_exam/classes/filmImages.dart';
 import 'package:cis2203_final_exam/database/ghibi_database.dart';
-import 'package:cis2203_final_exam/models/review.dart';
 import 'package:cis2203_final_exam/models/watchList.dart';
-import 'package:cis2203_final_exam/widgets/FilmCard.dart';
-import 'package:cis2203_final_exam/widgets/FormattedButton.dart';
+import 'package:cis2203_final_exam/pages/login.dart';
+import 'package:cis2203_final_exam/widgets/WatchListCard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 
 class WatchListPage extends StatefulWidget {
@@ -23,7 +21,7 @@ class _WatchListPageState extends State<WatchListPage> {
   var _filmData = [];
   var _filmPosters = new filmImage();
 
-  //http get Ghilbli Films
+  //http get Ghilbli Film data from API
   void fetchFilms() async {
     try {
       final response = await get(Uri.parse(url));
@@ -54,10 +52,20 @@ class _WatchListPageState extends State<WatchListPage> {
     fetchFilms();
     return Scaffold(
         appBar: AppBar(
-          title: Text("Watch List"),
+          title: Center(child: Text("Watch List")),
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+              onPressed: logout,
+              icon: Icon(Icons.logout),
+            )
+          ],
         ),
         body: isLoading
-            ? CircularProgressIndicator()
+            ? Container(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(),
+              )
             : _filmData.isEmpty
                 ? Container(
                     alignment: Alignment.center,
@@ -74,7 +82,8 @@ class _WatchListPageState extends State<WatchListPage> {
                           style: TextStyle(
                             fontSize: 21,
                           ),
-                        ))
+                        ),
+                      )
                     : GridView.builder(
                         scrollDirection: Axis.vertical,
                         physics: ScrollPhysics(),
@@ -91,11 +100,15 @@ class _WatchListPageState extends State<WatchListPage> {
                           final film = _filmData[watchList[i]!.filmIndex];
                           final filmImage = _filmPosters
                               .getFilmImages[watchList[i]!.filmIndex];
-                          return FilmCard(
+                          return WatchListCard(
                               film: film,
                               filmIndex: watchList[i]!.filmIndex,
                               imageUrl: filmImage);
                         },
                       ));
+  }
+
+  void logout() {
+    Navigator.pushNamed(context, Login.routeName);
   }
 }
