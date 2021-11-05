@@ -1,7 +1,7 @@
 # Ghibi: A Studio Ghibli Film Library
 
 Ghibi is a mobile film library for all of Studio Ghibli Films that allows users to scroll through Ghibli Films, save them in a watch list, and write and store reviews for specific Ghibli Films that they have watched.
-The app uses the [Studio Ghibli API](https://github.com/user/repo/blob/branch/other_file.md) for retrieving Studio Ghibli Film data.
+The app uses the [Studio Ghibli API](https://ghibliapi.herokuapp.com/) for retrieving Studio Ghibli Film data.
 The app currently uses SQLite for storing local data.
 
 ## Objectives
