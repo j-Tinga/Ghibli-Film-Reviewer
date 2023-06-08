@@ -13,7 +13,7 @@ Through this project, I was able to:
 - Learn how to implement a back-end for a mobile app (Firebase or SQLite)
 
 ## App Pages/Features
-__Login Page__ - Landing page for when the app is initially open. (Username and password are currently static, any valid text would do)
+__Login Page__ - Landing page for when the app is initially open. (Username and password are currently static due to Firebase connection being discontinued, any valid text would do)
 
 ![Login Page Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/Login.JPG?raw=true)
 
