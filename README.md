@@ -33,8 +33,3 @@ __Reviews__ - Users can write reviews on films that they have watched. They can 
 ![Write Review2 Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/WriteReviewPage2.JPG?raw=true)
 ![Reviews Screenshot](https://github.com/j-Tinga/Ghibli-Film-Reviewer/blob/main/Ghibi%20Screenshots/ReviewPage.JPG?raw=true)
 
-## Additional Notes (Future Work)
-- I don't know what happened but my Firebase stopped working days after my final submission, so I had to switch to using a local database through SQLite. Will have to practice and learn more about Firebase.
-- idk how to properly do the cool digital design, color schemes, animations etc. on Flutter; "Functionality" nalang sah ang theme sa app. 
-- Wanted to add CRUD operations on Reviews but already passed the one week time limit. Will add after final submission is graded
-- Login uses static username and password. Will work on it after I fix my Firebase problem.
